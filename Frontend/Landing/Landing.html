@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="Landing.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1 class="l-heading anim1">
+          <span><i>Welcome to Citi</i></span>
+        </h1>
+        <p class="sub-title anim1">
+          Automated Employee Management System.
+        </p>
+        <a href="C:\Users\Dell\Desktop\Neuada Project\Login Page\Login.html" class="btn anim1">Get Started</a>
+      </div>
+    </main>
+
+    <aside>
+      <img src="http://prod-upp-image-read.ft.com/fb7c0216-07c7-11ea-a958-5e9b7282cbd1" class="cofee" alt="" />
+    </aside>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    
+    <script>
+        const testDesc = document.querySelector(".description");
+        const imageDesc = document.querySelector(".photo-descriptive");
+        const cofee = document.querySelector(".cofee");
+        const title = document.querySelector(".l-heading");
+  
+        const tl = gsap.timeline({ defaults: { duration: 1 } });
+        tl.from(".anim1", { y: 0, opacity: 100 , stagger: 0 })
+          .from("aside", { backgroundPosition: "200px", opacity: 0 }, "-=1")
+          .from(
+            cofee,
+            {
+              y: 0,
+              opacity: 0
+            },
+            "-=0"
+          );
+  
+        document.querySelector(".btn").addEventListener("click", () => {
+          tl.reversed() ? tl.play() : tl.reverse();
+        });
+        // .to(rule, { cssRule: { scaleY: 0 } })
+      </script>
+
+  </body>
+</html>
