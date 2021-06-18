@@ -13,7 +13,6 @@ const auth = "/auth";
 exports.handler = async function (event) {
     let response;
     console.log('Request event: ', event.body);
-    const query = event.queryStringParamters;
     switch (true) {
         // Get all employees
         case event.httpMethod === 'GET' && event.path === empsPath:
