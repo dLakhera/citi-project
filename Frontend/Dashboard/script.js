@@ -1,22 +1,15 @@
+
+const loginForm = require('../Login/Login')
+
 $(document).ready(()=>{
   
   $('#open-sidebar').click(()=>{
-     
-      // add class active on #sidebar
       $('#sidebar').addClass('active');
-      
-      // show sidebar overlay
       $('#sidebar-overlay').removeClass('d-none');
-    
    });
   
-  
    $('#sidebar-overlay').click(function(){
-     
-      // add class active on #sidebar
       $('#sidebar').removeClass('active');
-      
-      // show sidebar overlay
       $(this).addClass('d-none');
     
    });
@@ -25,15 +18,19 @@ $(document).ready(()=>{
 
 function FetchData() {
    
+   if(!loginData.Auth) {
+      window.location.href = "../Login/Login.html"
+   }
+
    var name = document.getElementById('empName');
    var department = document.getElementById('department');
    var soeid = document.getElementById('soeid');
 
-   name.innerHTML =       localStorage.getItem('name');
-   department.innerHTML = localStorage.getItem('department');
-   soeid.innerHTML =      localStorage.getItem('soeid');
+   name.innerHTML =       loginData.name;
+   department.innerHTML = loginData.department;
+   soeid.innerHTML =      loginData.soeId;
 
-   var accessLevel = localStorage.getItem('access');
+   var accessLevel = loginData.access;
 
    var manager = document.getElementById('manager-tab');
    var employee = document.getElementById('employee-tab');
@@ -49,10 +46,8 @@ function FetchData() {
       employee.style.display = "none";
       vendor.style.display = "none";
    }
-
-
 }
 
 function clearLocalStorage() {
-   localStorage.setItem('Auth', false);
+   sessionStorage.setItem('Auth', false);
 }

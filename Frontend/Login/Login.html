@@ -3,7 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="Login.css">
-	<script src="Login.js"></script>
+	<script src="./Login.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -39,10 +39,13 @@
 						<p id="signin-ptag"></p>
 						<input type="text" name="empId" placeholder="SOE-ID" />
 						<input type="email" name="email" placeholder="Email Address" />
+						<input type="text" name="BU" placeholder="Business Unit" />
+						<input type="text" name="department" placeholder="Department" />
+						<input type="text" name="reportingTo" placeholder="reportingTo" />
 						<input type="password" name="password" placeholder="Create Password" />
 						<input type="password" name="confirm_password" placeholder="Confirm Password" />
 						<input type="text" name="accesstype" placeholder="type in M for manager, etc" />
-						<button type="button" onclick="signup()" value="Sign Up"> Sign Up!</button>
+						<button type="submit" onclick="signup()" value="Sign Up"> Sign Up!</button>
 						<p class="signup">
 							Already have an account ?
 							<a href="#" onclick="toggleForm();">Login!</a>
@@ -55,6 +58,7 @@
 			</div>
 		</div>
 	</section>
+
 </body>
 
 </html>

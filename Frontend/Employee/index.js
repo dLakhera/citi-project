@@ -1,7 +1,9 @@
+import { loginData } from '../Login/Login';
+
 function FetchData() {
     
     var soeid = document.getElementsByClassName('empSoeId');
-    soeid.innerHTML = localStorage.getItem('soeid');
+    soeid.innerHTML = loginData.soeid;
 
     var mail = document.getElementsByClassName('empEmail');
 
@@ -9,15 +11,15 @@ function FetchData() {
     var bu = document.getElementsByClassName('bu');
 
     for(var i=0;i<name.length;i++) {
-        name[i].innerHTML = localStorage.getItem('name');
+        name[i].innerHTML = loginData.name;
     }
 
     for(var i=0;i<bu.length;i++) {
-        bu[i].innerHTML = localStorage.getItem('bu');
+        bu[i].innerHTML = loginData.bu;
     }
 
     for(var ml of mail) {
-        ml.innerHTML = localStorage.getItem('emai;');
+        ml.innerHTML = loginData.email;
     }
 
 
