@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Simple HTML/CSS Contact Form</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">  
+  <form id="contact" action="" method="post">
+    <h3>Review Form</h3>
+    <br>
+    <fieldset>
+      <input placeholder="Employee name" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Employee SOEID" type="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <label >Work Rating &ensp; &nbsp; &ensp; &ensp;</label>
+      <input type="number" tabindex="3" required>
+    </fieldset>
+    <fieldset>
+      <label >Behaviour Rating &ensp;</label>
+      <input type="number" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <label >Comments if any: &ensp;</label>
+      <textarea placeholder="Type your comment here...." tabindex="5" required></textarea>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
+    
+  </form>
+</div>
+<!-- partial -->
+  
+</body>
+</html>
