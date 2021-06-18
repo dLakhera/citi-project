@@ -4,37 +4,52 @@
   <meta charset="UTF-8">
   <title>CodePen - Simple HTML/CSS Contact Form</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">  
-  <form id="contact" action="" method="post">
+  <form id="contact" onsubmit="return false;">
     <h3>Review Form</h3>
+    <p id="ptag"></p>
     <br>
-    <fieldset>
-      <input placeholder="Employee name" type="text" tabindex="1" required autofocus>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Employee SOEID" type="text" tabindex="2" required>
-    </fieldset>
-    <fieldset>
+      <input placeholder="Employee SOEID" type="text" tabindex="2" required value="">
       <label >Work Rating &ensp; &nbsp; &ensp; &ensp;</label>
-      <input type="number" tabindex="3" required>
-    </fieldset>
-    <fieldset>
-      <label >Behaviour Rating &ensp;</label>
-      <input type="number" tabindex="4" required>
-    </fieldset>
-    <fieldset>
+      <input type="number" tabindex="3" required value="">
       <label >Comments if any: &ensp;</label>
-      <textarea placeholder="Type your comment here...." tabindex="5" required></textarea>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </fieldset>
-    
+      <textarea placeholder="Type your comment here...." tabindex="5" required value=""></textarea>
+      <button name="submit" type="submit" onclick="submitBtn()">Submit</button>
   </form>
+
+  <script>
+    function submitBtn(){
+      var data = $("#contact").serializeArray();
+      var json = {
+        "empId":data[0].value,
+        "rating":data[1].value,
+        "review":data[2].value,
+        "reviewerId": "4"
+      }
+      console.log(json);
+      $.ajax({
+        type: "POST",
+        url: "https://hob31sq4bj.execute-api.ap-south-1.amazonaws.com/dev/review",
+        contentType: 'application/json',
+        data: JSON.stringify(json),
+        success: function (response) {
+          console.log(response);
+          document.getElementById('ptag').innerHTML = "Successfully submitted!";
+        }, error: function (err) {
+          console.log(err);
+          document.getElementById('ptag').innerHTML = "Wrong username/password combination"
+        }
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </div>
 <!-- partial -->
   

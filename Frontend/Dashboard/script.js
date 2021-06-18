@@ -1,6 +1,4 @@
 
-const loginForm = require('../Login/Login')
-
 $(document).ready(()=>{
   
   $('#open-sidebar').click(()=>{
@@ -46,6 +44,30 @@ function FetchData() {
       employee.style.display = "none";
       vendor.style.display = "none";
    }
+}
+
+function submitForm() {
+      var data = $("#leaveForm").serializeArray();
+      var json = {
+         "empId": data[0].value,
+         "start_date": data[1].value,
+         "end_date": data[2].value,
+         "leave_of_days": data[3].value
+      }
+      console.log(json);
+      $.ajax({
+         type: "POST",
+         url: "https://hob31sq4bj.execute-api.ap-south-1.amazonaws.com/dev/leave",
+         contentType: 'application/json',
+         data: JSON.stringify(json),
+         success: function (response) {
+            console.log(response);
+            document.getElementById('ptag').innerHTML = "Successfully submitted!";
+         }, error: function (err) {
+            console.log(err);
+            document.getElementById('ptag').innerHTML = "Wrong username/password combination"
+         }
+      });
 }
 
 function clearLocalStorage() {
